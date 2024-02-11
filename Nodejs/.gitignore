@@ -1,0 +1,29 @@
+# 依存関係 #
+/node_modules
+
+# ビルドされたファイル #
+/dist
+/build
+/*.js.map
+/*.js
+!/*.min.js
+
+# ドットファイル #
+/.env
+/.env.local
+/.env.*.local
+
+# OS 生成ファイル #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE設定 #
+/.idea
+/.vscode
+*.sw*
+*~

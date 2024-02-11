@@ -1,0 +1,36 @@
+<!-- client.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket チャットクライアント</title>
+</head>
+<body>
+    <textarea id="messages" rows="10" cols="50" readonly></textarea><br>
+    <input type="text" id="messageBox" placeholder="メッセージを入力...">
+    <button onclick="sendMessage()">送信</button>
+
+
+    <script>
+        var ws = new WebSocket('ws://localhost:8080');
+        var messages = document.getElementById('messages');
+    
+        ws.onmessage = async function (event) {
+            if (event.data instanceof Blob) {
+                const text = await event.data.text();
+                messages.value += text + "\n";
+            } else {
+                // 既にテキスト形式の場合、そのまま表示
+                messages.value += event.data + "\n";
+            }
+        };
+    
+        function sendMessage() {
+            var message = document.getElementById('messageBox').value;
+            ws.send(message);
+            document.getElementById('messageBox').value = ''; // メッセージボックスをクリア
+        }
+    </script>
+
+
+</body>
+</html>
