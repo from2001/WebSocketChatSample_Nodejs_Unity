@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebSocket チャットクライアント</title>
+    <title>WebSocket Chat client</title>
 </head>
 <body>
     <textarea id="messages" rows="10" cols="50" readonly></textarea><br>
-    <input type="text" id="messageBox" placeholder="メッセージを入力...">
+    <input type="text" id="messageBox" placeholder="Input your message...">
     <button onclick="sendMessage()">送信</button>
 
 
@@ -19,7 +19,6 @@
                 const text = await event.data.text();
                 messages.value += text + "\n";
             } else {
-                // 既にテキスト形式の場合、そのまま表示
                 messages.value += event.data + "\n";
             }
         };
@@ -27,7 +26,7 @@
         function sendMessage() {
             var message = document.getElementById('messageBox').value;
             ws.send(message);
-            document.getElementById('messageBox').value = ''; // メッセージボックスをクリア
+            document.getElementById('messageBox').value = '';
         }
     </script>
 

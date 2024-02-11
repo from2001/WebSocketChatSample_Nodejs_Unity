@@ -8,28 +8,27 @@ public class WebSocketChatClient : MonoBehaviour
 
     void Start()
     {
-        // WebSocketサーバーに接続
+        // Connect to the server
         ws = new WebSocket("ws://localhost:8080/");
 
         ws.OnMessage += (sender, e) =>
         {
             if (e.IsText)
             {
-                // テキストメッセージの場合、そのまま使用
-                Debug.Log("サーバーからのメッセージ: " + e.Data);
+                Debug.Log("Message from the server: " + e.Data);
             }
             else if (e.IsBinary)
             {
-                // バイナリメッセージの場合、UTF-8文字列にデコード
+                // Decode the byte array to string
                 string decodedMessage = System.Text.Encoding.UTF8.GetString(e.RawData);
-                Debug.Log("サーバーからのデコードされたメッセージ: " + decodedMessage);
+                Debug.Log("Message from the server: " + decodedMessage);
             }
         };
 
         ws.Connect();
 
-        // サーバーにメッセージを送信
-        ws.Send("Unityクライアントからこんにちは！");
+        // Send a message to the server
+        ws.Send("Hello, server! I'm an Unity client.");
     }
 
     void OnDestroy()
@@ -41,7 +40,7 @@ public class WebSocketChatClient : MonoBehaviour
         }
     }
 
-    // UIなどから呼び出すためのメッセージ送信メソッド
+    // Send a message to the server
     public void SendMessageToServer(string message)
     {
         if (ws.IsAlive)
