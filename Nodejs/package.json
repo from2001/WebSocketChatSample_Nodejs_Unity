@@ -1,13 +1,13 @@
 {
-  "name": "nodejs",
+  "name": "websocketchatsample",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple sample project for Websocket Chat with Nodejs server, HTML/Javascript and Unity client",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "from2001",
+  "license": "UNLICENSED",
   "dependencies": {
     "ws": "^8.16.0"
   }
