@@ -4,9 +4,6 @@
 # ビルドされたファイル #
 /dist
 /build
-/*.js.map
-/*.js
-!/*.min.js
 
 # ドットファイル #
 /.env
